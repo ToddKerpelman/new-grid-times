@@ -29,21 +29,19 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <InlineGroup>
+        <IconsWrapper>
           <button>
             <Search size={24} />
           </button>
           <button>
             <Menu size={24} />
           </button>
-        </InlineGroup>
+        </IconsWrapper>
         <Logo />
-        <InlineGroup>
-          <SubscribeWrapper>
-            <Button>Subscribe</Button>
-            <a href="https://www.google.com/">Already a subscriber?</a>
-          </SubscribeWrapper>
-        </InlineGroup>
+        <SubscribeWrapper>
+          <Button>Subscribe</Button>
+          <a href="https://www.google.com/">Already a subscriber?</a>
+        </SubscribeWrapper>
       </MainHeader>
     </header>
   );
@@ -63,7 +61,7 @@ const Row = styled(MaxWidthWrapper)`
   justify-content: space-between;
 `;
 
-const InlineGroup = styled.div`
+const IconsWrapper = styled.div`
   display: none;
 
   @media ${QUERIES.laptopAndUp} {
@@ -73,17 +71,24 @@ const InlineGroup = styled.div`
 `;
 
 const SubscribeWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  a {
-    color: var(--color-gray-900);
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 400;
-    text-decoration-line: underline;
+  display: none;
+  @media ${QUERIES.laptopAndUp} {
+    justify-self: end;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    a {
+      // Note: Josh ended up making this absolute positioning so we could
+      // remove it from the flow and auto-center the button
+      color: var(--color-gray-900);
+      font-size: 0.875rem;
+      font-style: italic;
+      font-weight: 400;
+      text-decoration-line: underline;
+    }
   }
 `;
 
@@ -106,9 +111,20 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.laptopAndUp} {
-    justify-content: space-between;
-    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: revert;
+    justify-items: start;
+    margin-top: 16px;
+    margin-bottom: 72px;
   }
 `;
 
