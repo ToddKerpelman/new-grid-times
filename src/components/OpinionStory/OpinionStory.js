@@ -29,6 +29,17 @@ const PaddingWrapper = styled.div`
   &:last-child {
     padding-bottom: 0px;
   }
+
+  @media ${QUERIES.tabletOnly} {
+    padding-top: 0px;
+    &:first-child {
+      padding-top: 0px;
+    }
+    &:last-child {
+      padding-bottom: 16px;
+    }
+    flex: 1;
+  }
 `;
 
 const Wrapper = styled.article`
