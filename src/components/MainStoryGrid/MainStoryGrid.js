@@ -73,6 +73,7 @@ const Wrapper = styled.div`
 const MainStorySection = styled.section`
   grid-area: main-story;
   @media ${QUERIES.tabletAndUp} {
+    // NB: Josh added margin right as well to these
     padding-right: 16px;
     border-right: 1px solid var(--color-gray-300);
   }
@@ -100,13 +101,16 @@ const OpinionStoryList = styled.div`
   gap: 1px;
   @media ${QUERIES.tabletOnly} {
     flex-direction: row;
-    gap: 32x;
+    gap: 32px;
     background-color: transparent;
   }
 `;
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+  @media ${QUERIES.laptopAndUp} {
+    margin-top: -9px;
+  }
 `;
 
 const AdvertisementSection = styled.section`
