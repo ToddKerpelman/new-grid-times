@@ -48,17 +48,37 @@ const SpecialtyStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   gap: 48px;
+  grid-template-areas:
+    "markets"
+    "sports";
+
+  @media ${QUERIES.tabletAndUp} {
+    gap: 64px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    gap: 16px;
+    grid-template-areas: "markets sports";
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
-const MarketsSection = styled.section``;
+const MarketsSection = styled.section`
+  grid-area: markets;
+  @media ${QUERIES.laptopAndUp} {
+    padding-right: 16px;
+    border-right: 1px solid var(--color-gray-300);
+  }
+`;
 
 const MarketCards = styled.div`
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
 `;
 
 const SportsSection = styled.section`
+  grid-area: sports;
   @media ${QUERIES.tabletAndUp} {
     max-width: 100%;
     overflow-x: auto;
@@ -68,10 +88,11 @@ const SportsSection = styled.section`
 const SportsStories = styled.div`
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
 
   @media ${QUERIES.tabletAndUp} {
-    grid-template-columns: repeat(${SPORTS_STORIES.length}, 200px);
+    // NB: Josh set this to a flexbox and added min-sizes to the stories
+    grid-template-columns: repeat(${SPORTS_STORIES.length}, 220px);
     overflow-x: auto;
   }
 `;
